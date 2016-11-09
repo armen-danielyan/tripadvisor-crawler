@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='/css/bootstrap-theme.min.css'/>
+    <link rel='stylesheet' href='/css/style.css'/>
+
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<header>
+
+</header>
+
+<main>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="url">TripAdvisor URL:</label>
+                        <input class="form-control" type="text" name="url" id="url" value="https://www.tripadvisor.com/Restaurants-g60763-New_York_City_New_York.html">
+                        <button class="btn btn-success" id="start">Start</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function(){
+
+                $("#start").on("click", function () {
+
+                    $.ajax({
+                        url: "/",
+                        type: "POST",
+                        data: {
+                            "action": "start",
+                            "url": $("#url").val()
+                        },
+                        success: function (data) {
+                            console.log(data.status);
+                        }
+                    });
+
+                });
+            });
+
+        </script>
+    </div>
+</main>
+
+<fotter>
+
+</fotter>
+
+</body>
+</html>
